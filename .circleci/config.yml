@@ -48,22 +48,12 @@ jobs:
       - aws-cli/setup
       - checkout
       - run:
-          name: Deploy App
+          name: Testing
           command: |
-            npm run deploy
+            echo ${POSTGRES_HOST}
+            eb setenv POSTGRES_HOST=${POSTGRES_HOST}
 
 workflows:
   udagram:
     jobs:
-      - build
-      - hold:
-          filters:
-            branches:
-              only:
-                - main
-          type: approval
-          requires:
-            - build
       - deploy:
-          requires:
-            - hold
