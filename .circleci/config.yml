@@ -51,9 +51,6 @@ jobs:
           name: Testing
           command: |
             echo ${POSTGRES_HOST}
-            cd udagram/udagram-api
-            eb use udagram-server-dev
-            eb setenv POSTGRES_HOST=${POSTGRES_HOST}
 
 workflows:
   udagram:
